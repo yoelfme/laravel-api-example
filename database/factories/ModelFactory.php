@@ -19,3 +19,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
+    return [
+        'image' => 'product-default.png',
+        'name' => 'name default',
+        'price' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = NULL),
+        'quantity' => $faker->randomDigit
+    ];
+});

@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1', function ($api) {
+    $api->get('products/{id}', 'App\Http\Controllers\Api\V1\ProductController@show');
+    $api->get('products', 'App\Http\Controllers\Api\V1\ProductController@index');
+    $api->post('products', 'App\Http\Controllers\Api\V1\ProductController@store');
+    $api->put('products/{id}', 'App\Http\Controllers\Api\V1\ProductController@update');
+    $api->delete('products/{id}', 'App\Http\Controllers\Api\V1\ProductController@destroy');
+});
